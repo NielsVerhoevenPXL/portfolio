@@ -1,0 +1,122 @@
+body {
+    background-color: #000;
+    color: #ccc;
+    font-family: 'Courier New', monospace;
+    padding: 10px; /* Reduced padding */
+    line-height: 1.5; /* Reduced line height */
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.terminal {
+    max-width: 800px;
+    margin: 0;  /* Left-aligned terminal */
+    width: 100%;
+}
+
+.prompt {
+    color: #ccc;
+    display: flex;
+    align-items: center;
+}
+
+.prompt::before {
+    content: "> ";
+    margin-right: 5px; /* Reduced margin */
+}
+
+.neofetch {
+    display: flex;
+    gap: 30px; /* Reduced gap */
+    margin-top: 5px;
+    margin-bottom: 10px; /* Reduced margin */
+    justify-content: flex-start; /* Align content to the left */
+}
+
+.ascii-art {
+    color: #00FF00;
+    text-align: left;  /* Ensure left alignment */
+}
+
+.ascii-art span {
+    white-space: pre;
+}
+
+.info {
+    flex-grow: 1;
+    text-align: left;  /* Ensure left alignment */
+}
+
+.name {
+    color: #00FF00;
+}
+
+.divider {
+    color: #ccc;
+}
+
+.links {
+    text-align: left;  /* Ensure left alignment */
+}
+
+.links a {
+    color: #00FF00;
+    text-decoration: none;
+    margin-right: 10px; /* Reduced margin */
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+.bio {
+    color: #ccc;
+    max-width: 600px;
+    text-align: left;  /* Ensure left alignment */
+}
+
+.command-line {
+    display: flex;
+    align-items: center;
+    margin-top: 10px; /* Reduced margin */
+}
+
+.command-input {
+    background-color: transparent;
+    border: none;
+    color: #ccc;
+    font-family: 'Courier New', monospace;
+    width: 100%;
+    font-size: 16px;
+    outline: none;
+    padding: 5px 0;
+    text-align: left;  /* Ensure left alignment */
+}
+
+.blink {
+    animation: blink 1s infinite;
+    color: #ccc;
+    margin-left: 4px;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@media (max-width: 768px) {
+    .neofetch {
+        flex-direction: column;
+        gap: 5px; /* Reduced gap */
+    }
+    
+    body {
+        padding: 5px;  /* Smaller padding on mobile */
+    }
+    
+    .terminal {
+        max-width: 100%;  /* Take full width on mobile */
+    }
+}
