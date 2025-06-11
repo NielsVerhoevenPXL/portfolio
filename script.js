@@ -19,13 +19,16 @@ commandInput.addEventListener('keydown', function(e) {
         
         // Process commands
         if (command === 'help' || command === '--help') {
-            responseElement.innerHTML = `Available commands:
-neofetch    - display system info
-cat bio.txt - show bio
-ls          - list files
-clear       - clear the terminal
-contact     - show contact info
-cowsay      - show cow with message`;
+            responseElement.innerHTML = `Available commands:<br>
+neofetch    - display system info<br>
+cat bio.txt - show bio<br>
+ls          - list files<br>
+clear       - clear the terminal<br>
+contact     - show contact info<br>
+cowsay      - show cow with message<br>
+cd activities - view activities page<br>
+cd innovations - view innovations page<br>
+cd selected - view selected activities`;
         } else if (command === 'neofetch') {
             // Clone the neofetch display
             const neofetchClone = document.querySelector('.neofetch').cloneNode(true);
@@ -39,12 +42,27 @@ cowsay      - show cow with message`;
             return;
         } else if (command === 'ls') {
             responseElement.innerHTML = `bio.txt
-contact.txt`;
+activities/
+innovations/
+selected/`;
         } else if (command === 'clear') {
-            // Remove all children except the last one (command input)
-            while (terminal.children.length > 1) {
-                terminal.removeChild(terminal.firstChild);
-            }
+            // Get references to initial content
+            const initialNeofetchPrompt = document.getElementById('initial-neofetch-prompt');
+            const initialNeofetch = document.getElementById('initial-neofetch');
+            const initialBioPrompt = document.getElementById('initial-bio-prompt');
+            const initialBio = document.getElementById('initial-bio');
+            const commandInput = terminal.lastElementChild;
+            
+            // Clear all content
+            terminal.innerHTML = '';
+            
+            // Restore initial content
+            terminal.appendChild(initialNeofetchPrompt);
+            terminal.appendChild(initialNeofetch);
+            terminal.appendChild(initialBioPrompt);
+            terminal.appendChild(initialBio);
+            terminal.appendChild(commandInput);
+            
             this.value = '';
             return;
         } else if (command === 'contact') {
@@ -63,6 +81,18 @@ LinkedIn: linkedin.com/in/verhoeven-niels`;
                 ||----w |
                 ||     ||
 </div>`;
+        } else if (command === 'cd activities' || command === 'cd activities/') {
+            window.scrollTo(0, 0);
+            window.location.href = 'activities.html';
+            return;
+        } else if (command === 'cd innovations' || command === 'cd innovations/') {
+            window.scrollTo(0, 0);
+            window.location.href = 'innovations.html';
+            return;
+        } else if (command === 'cd selected' || command === 'cd selected/') {
+            window.scrollTo(0, 0);
+            window.location.href = 'selected-activities.html';
+            return;
         } else if (command === '') {
             return;
         } else {

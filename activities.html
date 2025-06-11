@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niels Verhoeven | Activities</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="terminal">
+        <div class="prompt">cat activities.txt</div>
+        
+        <div class="activities">
+            <h2 class="section-title">Overzicht activiteiten</h2>
+            
+            <div class="section">
+                <h3>2.1 Verplichte activiteiten, per domein</h3>
+                <h4>2.1.1 Seminaries</h4>
+                
+                <div class="activity">
+                    <div class="activity-number">1. Seminarie Inleiding tot visuele generatieve AI</div>
+                    <div class="activity-desc">
+                        • Tijdens het seminarie heb ik geleerd over de basisprincipes van visuele
+                        generatieve AI en hoe deze kan worden gebruikt om afbeeldingen te
+                        genereren.<br>
+                        • Locatie: Hogeschool PXL, Bedrijf: Uncanny<br>
+                        • Datum: 12/03/2024, Tijd: 3 uur
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="activity-number">2. Seminarie Ethical Hacking</div>
+                    <div class="activity-desc">
+                        • Tijdens het seminarie hebben we in groep capture the flag gespeeld en
+                        kregen we een blik in het dagdagelijkse leven van een ethical hacker.<br>
+                        • Locatie: Hogeschool PXL, Bedrijf: Toreon<br>
+                        • Datum: 19/03/2024, Tijd: 3 uur
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="activity-number">3. Seminarie CI/CD use cases</div>
+                    <div class="activity-desc">
+                        • Tijdens het seminarie hebben we geleerd over de basisprincipes van CI/CD
+                        en hoe dit gebruikt werkt in het bedrijf Ordina. Dit was ook de eerste
+                        aanraking met Gitlab als CI/CD tool.<br>
+                        • Locatie: Hogeschool PXL, Bedrijf: Ordina<br>
+                        • Datum: 16/04/2024, Tijd: 3 uur
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="activity-number">4. Seminarie Digitaal onderzoek: forensics, cybercrime, crypto-assets en data-analyse</div>
+                    <div class="activity-desc">
+                        • Tijdens het seminarie hebben we geleerd over hoe cybersecurity binnen de
+                        politie wordt behandeld en welke tools ze hiervoor gebruiken.<br>
+                        • Locatie: Hogeschool PXL, Bedrijf: Politie<br>
+                        • Datum: 7/05/2024, Tijd: 3 uur
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="activity-number">5. Seminarie Innovatie in netwerkbeheer binnen Managed Services</div>
+                    <div class="activity-desc">
+                        • Tijdens het seminarie kregen we een overzicht van hoe Openline hun
+                        netwerken beheren door gebruik te maken van python en ansible.<br>
+                        • Locatie: Hogeschool PXL, Bedrijf: Openline<br>
+                        • Datum: 14/05/2024, Tijd: 3 uur
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="activity-number">6. Seminarie Discover the meeting point of GenAI, Prompt Engineering and Quantum Computing</div>
+                    <div class="activity-desc">
+                        • Tijdens het seminarie hebben we een inleiding gekregen over de kruising
+                        tussen generatieve AI, prompt engineering en quantum computing, en hoe
+                        IBM deze technologieën integreert.<br>
+                        • Locatie: Hogeschool PXL, Bedrijf: IBM<br>
+                        • Datum: 6/11/2024, Tijd: 3 uur
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="activity-number">7. Seminarie DevSecOps Workshop</div>
+                    <div class="activity-desc">
+                        • Tijdens dit interactieve seminarie hebben we praktische aspecten van
+                        DevSecOps leren kennen, met focus op de integratie van security in de
+                        DevOps-workflow.<br>
+                        • Locatie: Hogeschool PXL, Bedrijf: Gluo<br>
+                        • Datum: 13/11/2024, Tijd: 3 uur
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="activity-number">8. Seminarie Bedrijfsbezoek en datacenter</div>
+                    <div class="activity-desc">
+                        • We kregen de kans om het datacenter van Cegeka te bezoeken en inzicht te
+                        krijgen in hun bedrijfsprocessen en technologische infrastructuur.<br>
+                        • Locatie: Cegeka, Bedrijf: Cegeka<br>
+                        • Datum: 20/11/2024, Tijd: 3 uur
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="activity-number">9. Seminarie Intro into Digital Forensics</div>
+                    <div class="activity-desc">
+                        • Dit seminarie bood een inleiding tot digitale forensische technieken die
+                        door de politie worden gebruikt bij het onderzoeken van cybercriminaliteit.<br>
+                        • Locatie: Hogeschool PXL, Bedrijf: Politie<br>
+                        • Datum: 4/12/2024, Tijd: 3 uur
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="prompt">
+            <input type="text" class="command-input" id="commandInput" autofocus placeholder="">
+            <span class="blink">█</span>
+        </div>
+    </div>
+    
+    <script>
+        // Ensure page starts at top
+        window.addEventListener('load', function() {
+            window.scrollTo(0, 0);
+        });
+        
+        const commandInput = document.getElementById('commandInput');
+        const terminal = document.querySelector('.terminal');
+
+        commandInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                const command = this.value.trim().toLowerCase();
+                
+                // Create command element
+                const cmdElement = document.createElement('div');
+                cmdElement.className = 'prompt';
+                cmdElement.textContent = command;
+                
+                // Add command to terminal
+                terminal.insertBefore(cmdElement, terminal.lastElementChild);
+                
+                // Create response element
+                const responseElement = document.createElement('div');
+                responseElement.className = 'bio';
+                
+                // Process commands
+                if (command === 'cd ..' || command === 'cd ../') {
+                    window.scrollTo(0, 0);
+                    window.location.href = 'index.html';
+                    return;
+                } else if (command === 'clear') {
+                    // Remove all children except the last one (command input)
+                    while (terminal.children.length > 1) {
+                        terminal.removeChild(terminal.firstChild);
+                    }
+                    this.value = '';
+                    return;
+                } else if (command === 'help' || command === '--help') {
+                    responseElement.innerHTML = `Available commands:<br>
+cd ..       - go back to main page<br>
+clear       - clear the terminal`;
+                } else if (command === '') {
+                    return;
+                } else {
+                    responseElement.textContent = `command not found: ${command}`;
+                }
+                
+                // Add response to terminal
+                terminal.insertBefore(responseElement, terminal.lastElementChild);
+                
+                // Scroll to bottom
+                window.scrollTo(0, document.body.scrollHeight);
+                
+                // Clear input
+                this.value = '';
+            }
+        });
+    </script>
+</body>
+</html>

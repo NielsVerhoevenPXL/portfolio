@@ -8,9 +8,9 @@
 </head>
 <body>
     <div class="terminal">
-        <div class="prompt">neofetch</div>
+        <div class="prompt" id="initial-neofetch-prompt">neofetch</div>
         
-        <div class="neofetch">
+        <div class="neofetch" id="initial-neofetch">
             <div class="ascii-art">
                 <span>,~,;,</span>
                 <br>
@@ -42,8 +42,8 @@
             </div>
         </div>
         
-        <div class="prompt">cat bio.txt</div>
-        <div class="bio">
+        <div class="prompt" id="initial-bio-prompt">cat bio.txt</div>
+        <div class="bio" id="initial-bio">
             driven devops engineer passionate about infrastructure, automation,
             and cybersecurity. specialized in linux and cloud technologies.
         </div>
@@ -55,5 +55,11 @@
     </div>
     
     <script src="script.js"></script>
+    <script>
+        // Ensure page starts at top
+        window.addEventListener('load', function() {
+            window.scrollTo(0, 0);
+        });
+    </script>
 </body>
 </html>

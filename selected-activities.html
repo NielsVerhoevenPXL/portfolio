@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niels Verhoeven | Selected Activities</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="terminal">
+        <div class="prompt">cat selected-activities.txt</div>
+        
+        <div class="selected-activities">
+            <h2 class="section-title">Selected Activities</h2>
+            
+            <div class="selected-activity">
+                <h3 class="activity-title">Nacht van de Bib - CoderDojo</h3>
+                <div class="activity-description">
+                    Een inspirerende avond waarbij ik jongeren introduceerde tot programmeren tijdens de 'Nacht van de Bib' in Bilzen-Hoeselt. 
+                    Met een Halloween-thema leerde ik kinderen de basis van programmeren via Scratch, waarbij ze hun eigen Flappy Bird-kloon 
+                    creëerden en experimenteerden met lasersnijder-workshops. Deze ervaring heeft mijn passie voor kennisdeling en onderwijs 
+                    binnen de IT-sector versterkt.
+                </div>
+                <div class="activity-image">
+                    <img src="images/nacht_van_de_bib.png" alt="Nacht van de Bib - CoderDojo programming workshop" class="activity-img">
+                </div>
+            </div>
+            
+            <div class="selected-activity">
+                <h3 class="activity-title">Politie Colleges - Digital Forensics</h3>
+                <div class="activity-description">
+                    Diepgaande workshops over ICT binnen de politie en praktische training in digitaal forensisch onderzoek onder Linux. 
+                    Geleerd over grooming-technieken, phishing-aanvallen, en hands-on ervaring met forensische tools zoals The Sleuth Kit, 
+                    dd, dcfldd, en Guymager. Focus op acquisitie, analyse en presentatie van digitaal bewijsmateriaal, inclusief data carving 
+                    en Windows-artefact analyse binnen Linux-omgevingen.
+                </div>
+                <div class="activity-image">
+                    <img src="images/linux_police.png" alt="Politie Colleges - Digital Forensics workshop" class="activity-img">
+                </div>
+            </div>
+            
+            <div class="selected-activity">
+                <h3 class="activity-title">Studiereis - Tech History & Innovation</h3>
+                <div class="activity-description">
+                    Een zelfgeorganiseerde studiereis naar technologie-historische locaties, waaronder het Philips Museum in Eindhoven 
+                    en het Heinz Nixdorf MuseumsForum in Paderborn. Van de eerste gloeilamp productie tot mechanische rekenmachines, 
+                    ponskaarten en vroege computers zoals de Harvard Mark I. Afgesloten met de AWS Summit in Amsterdam voor 
+                    moderne cloud technologieën. Een inspirerende reis door de evolutie van computing en technologie.
+                </div>
+                <div class="activity-image">
+                    <div class="image-placeholder">
+                        <span>🏛️ Tech Museums</span>
+                        <div class="image-description">Computing history & AWS Summit</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="prompt">
+            <input type="text" class="command-input" id="commandInput" autofocus placeholder="">
+            <span class="blink">█</span>
+        </div>
+    </div>
+    
+    <script>
+        // Ensure page starts at top
+        window.addEventListener('load', function() {
+            window.scrollTo(0, 0);
+        });
+        
+        const commandInput = document.getElementById('commandInput');
+        const terminal = document.querySelector('.terminal');
+
+        commandInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                const command = this.value.trim().toLowerCase();
+                
+                // Create command element
+                const cmdElement = document.createElement('div');
+                cmdElement.className = 'prompt';
+                cmdElement.textContent = command;
+                
+                // Add command to terminal
+                terminal.insertBefore(cmdElement, terminal.lastElementChild);
+                
+                // Create response element
+                const responseElement = document.createElement('div');
+                responseElement.className = 'bio';
+                
+                // Process commands
+                if (command === 'cd ..' || command === 'cd ../') {
+                    window.scrollTo(0, 0);
+                    window.location.href = 'index.html';
+                    return;
+                } else if (command === 'clear') {
+                    // Remove all children except the last one (command input)
+                    while (terminal.children.length > 1) {
+                        terminal.removeChild(terminal.firstChild);
+                    }
+                    this.value = '';
+                    return;
+                } else if (command === 'help' || command === '--help') {
+                    responseElement.innerHTML = `Available commands:<br>
+cd ..       - go back to main page<br>
+clear       - clear the terminal`;
+                } else if (command === '') {
+                    return;
+                } else {
+                    responseElement.textContent = `command not found: ${command}`;
+                }
+                
+                // Add response to terminal
+                terminal.insertBefore(responseElement, terminal.lastElementChild);
+                
+                // Scroll to bottom
+                window.scrollTo(0, document.body.scrollHeight);
+                
+                // Clear input
+                this.value = '';
+            }
+        });
+    </script>
+</body>
+</html>
